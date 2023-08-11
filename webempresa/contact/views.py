@@ -11,7 +11,7 @@ def contact(request):
         if contact_form.is_valid():
             name = request.POST.get('name','')
             email = request.POST.get('email','')
-            content = request.POST.get('mensaje','')
+            content = request.POST.get('content','')
             #Enviamos correo y redireccionamos
             email = EmailMessage(
                 'La Caffetiera: Nuevo Mensaje de contaco', 
