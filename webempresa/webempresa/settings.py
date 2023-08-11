@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'ckeditor',
+    'contact',
     'core',
-    'services.apps.ServicesConfig'
+    'services.apps.ServicesConfig',
+    'social.apps.SocialConfig',
+    'pages.apps.PagesConfig'
 ]
 
 MIDDLEWARE = [
@@ -63,8 +67,9 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
+                'django.contrib.auth.context_processors.auth', #Maneja la auteticacion de admin 
                 'django.contrib.messages.context_processors.messages',
+                'social.processors.ctx_dict'
             ],
         },
     },
@@ -131,4 +136,22 @@ MEDIA_ROOT = BASE_DIR/'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#ckeditor
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink']
+        ]
+    }
+}
+
+#Emaiñ config
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '0e66630872372f'
+EMAIL_HOST_PASSWORD = 'eb38d442f0bd8f'
+EMAIL_PORT = '2525'
